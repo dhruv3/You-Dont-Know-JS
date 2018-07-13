@@ -1,4 +1,11 @@
 # You Don't Know JS: Up & Going
+
+# My Notes
+* The JavaScript engine actually compiles the program on the fly and then immediately runs the compiled code.
+* For input use the prompt(..) function
+* JavaScript uses **dynamic typing** approach, meaning variables can hold values of any type without any type enforcement.
+* In JavaScript, each function gets its own scope. Only code inside that function can access that function's scoped variables.
+
 # Chapter 1: Into Programming
 
 Welcome to the *You Don't Know JS* (*YDKJS*) series.
@@ -82,7 +89,7 @@ For some computer languages, this translation of commands is typically done from
 
 For other languages, the translation is done ahead of time, called *compiling* the code, so when the program *runs* later, what's running is actually the already compiled computer instructions ready to go.
 
-It's typically asserted that JavaScript is *interpreted*, because your JavaScript source code is processed each time it's run. But that's not entirely accurate. The JavaScript engine actually *compiles* the program on the fly and then immediately runs the compiled code.
+It's typically asserted that JavaScript is *interpreted*, because your JavaScript source code is processed each time it's run. But that's not entirely accurate. **The JavaScript engine actually *compiles* the program on the fly and then immediately runs the compiled code.**
 
 **Note:** For more information on JavaScript compiling, see the first two chapters of the *Scope & Closures* title of this series.
 
@@ -138,7 +145,7 @@ While we're discussing output, you may also wonder about *input* (i.e., receivin
 
 The most common way that happens is for the HTML page to show form elements (like text boxes) to a user that they can type into, and then using JS to read those values into your program's variables.
 
-But there's an easier way to get input for simple learning and demonstration purposes such as what you'll be doing throughout this book. Use the `prompt(..)` function:
+But there's an easier way to get input for simple learning and demonstration purposes such as what you'll be doing throughout this book. **Use the `prompt(..)` function**:
 
 ```js
 age = prompt( "Please tell me your age:" );
@@ -345,7 +352,7 @@ In some programming languages, you declare a variable (container) to hold a spec
 
 Other languages emphasize types for values instead of variables. *Weak typing*, otherwise known as *dynamic typing*, allows a variable to hold any type of value at any time. It's typically cited as a benefit for program flexibility by allowing a single variable to represent a value no matter what type form that value may take at any given moment in the program's logic flow.
 
-JavaScript uses the latter approach, *dynamic typing*, meaning variables can hold values of any *type* without any *type* enforcement.
+**JavaScript uses the latter approach, *dynamic typing*, meaning variables can hold values of any *type* without any *type* enforcement.**
 
 As mentioned earlier, we declare a variable using the `var` statement -- notice there's no other *type* information in the declaration. Consider this simple program:
 
@@ -645,7 +652,7 @@ Although `calculateFinalPurchaseAmount(..)` is only called once, organizing its 
 
 If you ask the phone store employee for a phone model that her store doesn't carry, she will not be able to sell you the phone you want. She only has access to the phones in her store's inventory. You'll have to try another store to see if you can find the phone you're looking for.
 
-Programming has a term for this concept: *scope* (technically called *lexical scope*). In JavaScript, each function gets its own scope. Scope is basically a collection of variables as well as the rules for how those variables are accessed by name. Only code inside that function can access that function's *scoped* variables.
+Programming has a term for this concept: *scope* (technically called *lexical scope*). **In JavaScript, each function gets its own scope. Scope is basically a collection of variables as well as the rules for how those variables are accessed by name. Only code inside that function can access that function's *scoped* variables.**
 
 A variable name has to be unique within the same scope -- there can't be two different `a` variables sitting right next to each other. But the same variable name `a` could appear in different scopes.
 
@@ -666,7 +673,7 @@ one();		// 1
 two();		// 2
 ```
 
-Also, a scope can be nested inside another scope, just like if a clown at a birthday party blows up one balloon inside another balloon. If one scope is nested inside another, code inside the innermost scope can access variables from either scope.
+Also, a scope can be nested inside another scope, just like if a clown at a birthday party blows up one balloon inside another balloon. **If one scope is nested inside another, code inside the innermost scope can access variables from either scope.**
 
 Consider:
 
