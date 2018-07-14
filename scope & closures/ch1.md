@@ -1,4 +1,14 @@
 # You Don't Know JS: Scope & Closures
+
+# My Notes
+* JS is a compiled language. Unlike others it is not compiled well in advance nor are the results of compilation portable among various distributed systems.
+* JavaScript engines don't get the luxury (like other language compilers) of having plenty of time to optimize, because JavaScript compilation doesn't happen in a build step ahead of time, as with other languages.
+* JS engines use all kinds of tricks (like JITs, which lazy compile and even hot re-compile, etc.)
+* `console.log(a)` => This is a RHS reference, because nothing is being assigned to a here. Instead, we're looking-up to retrieve the value of `a`, so that the value can be passed to `console.log(..)`.
+* To decide if its LHS or RHS think like: "who's the target of the assignment (LHS)" and "who's the source of the assignment (RHS)".
+* If RHS look up of a varibale fails then Engine throws `ReferenceError`. If LHS look up of a variable fails then Engine creates a new variable in the global scope(provided strict mode is off). 
+* `ReferenceError` is Scope resolution-failure related, whereas `TypeError` implies that Scope resolution was successful, but that there was an illegal/impossible action attempted against the result.
+
 # Chapter 1: What is Scope?
 
 One of the most fundamental paradigms of nearly all programming languages is the ability to store values in variables, and later retrieve or modify those values. In fact, the ability to store values and pull values out of variables is what gives a program *state*.
@@ -37,9 +47,9 @@ The JavaScript engine is vastly more complex than *just* those three steps, as a
 
 So, I'm painting only with broad strokes here. But I think you'll see shortly why *these* details we *do* cover, even at a high level, are relevant.
 
-For one thing, JavaScript engines don't get the luxury (like other language compilers) of having plenty of time to optimize, because JavaScript compilation doesn't happen in a build step ahead of time, as with other languages.
+For one thing, **JavaScript engines don't get the luxury (like other language compilers) of having plenty of time to optimize, because JavaScript compilation doesn't happen in a build step ahead of time, as with other languages.**
 
-For JavaScript, the compilation that occurs happens, in many cases, mere microseconds (or less!) before the code is executed. To ensure the fastest performance, JS engines use all kinds of tricks (like JITs, which lazy compile and even hot re-compile, etc.) which are well beyond the "scope" of our discussion here.
+For JavaScript, the compilation that occurs happens, in many cases, mere microseconds (or less!) before the code is executed. To ensure the fastest performance, **JS engines use all kinds of tricks (like JITs, which lazy compile and even hot re-compile, etc.)** which are well beyond the "scope" of our discussion here.
 
 Let's just say, for simplicity's sake, that any snippet of JavaScript has to be compiled before (usually *right* before!) it's executed. So, the JS compiler will take the program `var a = 2;` and compile it *first*, and then be ready to execute it, usually right away.
 
@@ -105,7 +115,7 @@ When I say:
 console.log( a );
 ```
 
-The reference to `a` is an RHS reference, because nothing is being assigned to `a` here. Instead, we're looking-up to retrieve the value of `a`, so that the value can be passed to `console.log(..)`.
+The reference to `a` is an **RHS reference, because nothing is being assigned to `a` here. Instead, we're looking-up to retrieve the value of `a`, so that the value can be passed to `console.log(..)`.**
 
 By contrast:
 
@@ -115,7 +125,7 @@ a = 2;
 
 The reference to `a` here is an LHS reference, because we don't actually care what the current value is, we simply want to find the variable as a target for the `= 2` assignment operation.
 
-**Note:** LHS and RHS meaning "left/right-hand side of an assignment" doesn't necessarily literally mean "left/right side of the `=` assignment operator". There are several other ways that assignments happen, and so it's better to conceptually think about it as: "who's the target of the assignment (LHS)" and "who's the source of the assignment (RHS)".
+**Note:** LHS and RHS meaning "left/right-hand side of an assignment" doesn't necessarily literally mean "left/right side of the `=` assignment operator". There are several other ways that assignments happen, and so it's better to conceptually think about it as: **"who's the target of the assignment (LHS)" and "who's the source of the assignment (RHS)"**.
 
 Consider this program, which has both LHS and RHS references:
 
@@ -269,7 +279,7 @@ By contrast, if the *Engine* is performing an LHS look-up and arrives at the top
 
 Now, if a variable is found for an RHS look-up, but you try to do something with its value that is impossible, such as trying to execute-as-function a non-function value, or reference a property on a `null` or `undefined` value, then *Engine* throws a different kind of error, called a `TypeError`.
 
-`ReferenceError` is *Scope* resolution-failure related, whereas `TypeError` implies that *Scope* resolution was successful, but that there was an illegal/impossible action attempted against the result.
+**`ReferenceError` is *Scope* resolution-failure related, whereas `TypeError` implies that *Scope* resolution was successful, but that there was an illegal/impossible action attempted against the result.**
 
 ## Review (TL;DR)
 
