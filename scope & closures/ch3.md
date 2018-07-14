@@ -1,4 +1,12 @@
 # You Don't Know JS: Scope & Closures
+
+# My Notes
+* Way of thinking: Take any arbitrary section of code you've written, and wrap a function declaration around it, which in effect "hides" the code.
+* Functions are by no means the only unit of scope. Block-scope refers to the idea that variables and functions can belong to an arbitrary block (generally, any `{ .. }` pair) of code, rather than only to the enclosing function.
+*  ES3 specified the variable declaration in the `catch` clause of a `try/catch` to be block-scoped to the `catch` block.
+* Declarations made with `let` will **not** hoist to the entire scope of the block they appear in. Such declarations will not observably "exist" in the block until the declaration statement.
+* Declaring explicit blocks can help Garbage Collector know that things inside this block will not be used after the block ends.
+
 # Chapter 3: Function vs. Block Scope
 
 As we explored in Chapter 2, scope consists of a series of "bubbles" that each act as a container or bucket, in which identifiers (variables, functions) are declared. These bubbles nest neatly inside each other, and this nesting is defined at author-time.
@@ -201,7 +209,7 @@ The key difference we can observe here between a function declaration and a func
 
 Compare the previous two snippets. In the first snippet, the name `foo` is bound in the enclosing scope, and we call it directly with `foo()`. In the second snippet, the name `foo` is not bound in the enclosing scope, but instead is bound only inside of its own function.
 
-In other words, `(function foo(){ .. })` as an expression means the identifier `foo` is found *only* in the scope where the `..` indicates, not in the outer scope. Hiding the name `foo` inside itself means it does not pollute the enclosing scope unnecessarily.
+In other words, `(function foo(){ .. })` as an expression means the identifier `foo` is found *only* in the scope where the `..` indicates, not in the outer scope. **Hiding the name `foo` inside itself means it does not pollute the enclosing scope unnecessarily.**
 
 ### Anonymous vs. Named
 
