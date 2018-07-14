@@ -1,4 +1,12 @@
 # You Don't Know JS: Scope & Closures
+
+# My Notes
+* In lex scope you are suppose to know your scope and corresponding variable during lex phase(tokenizing). Alternate to lex scope is dynamic scoping.
+* There are two ways to cheat or modify lexical scope at run-time: `eval` and `with`
+* The `eval(..)` function in JavaScript takes a string as an argument, and treats the contents of the string as if it had actually been authored code at that point in the program. Eg: `eval("var b = 3")` => This `b` will overshadow any `b` declared in outer scopes.
+* **Note:** eval(..) when used in a strict-mode program operates in its own lexical scope, which means declarations made inside of the eval() do not actually modify the enclosing scope.
+* When engine comes across `eval` and `with` it doesn't do optimizations it would have done. Without these optimizations our code will run slower than usual.
+
 # Chapter 2: Lexical Scope
 
 In Chapter 1, we defined "scope" as the set of rules that govern how the *Engine* can look up a variable by its identifier name and find it, either in the current *Scope*, or in any of the *Nested Scopes* it's contained within.
