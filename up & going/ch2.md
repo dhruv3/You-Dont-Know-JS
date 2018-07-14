@@ -1,4 +1,21 @@
 # You Don't Know JS: Up & Going
+
+# My Notes
+* Functions are a subtype of objects -- typeof returns "function", which implies that a function is a main type -- and can thus have properties.
+* Object Wrapper(String with capital S) that defines the toUpperCase() method on its prototype. JS automatically "boxes" the value to its object wrapper counterpart.
+* The specific list of "falsy" values in JavaScript:
+	* `""` (empty string) 
+	* 0, -0, `NaN` (invalid number) 
+	* `null`, `undefined` 
+	* false
+* `==` checks for value equality with coercion allowed, and === checks for value equality without allowing coercion. If you can't be certain about the values, use `===`. Both `==` and `===` comparisons will simply check whether the references match, not anything about the underlying values.
+* Arrays are by default coerced to strings by simply joining all the values with commas (,) in between. Eg: `[1,2,3] == "1,2,3" //true`
+* If you try to set a variable that hasn't been declared, you'll either end up creating a variable in the top-level global scope. Eg- a = 16; This makes 'a' global variable
+* In addition to creating declarations for variables at the function level, ES6 lets you declare variables to belong to individual blocks (pairs of { .. }), using the let keyword.
+* Because an IIFE is just a function, and functions create variable scope, using an IIFE in this fashion is often used to declare variables that won't affect the surrounding code outside the IIFE.
+* If a function has a this reference inside it, that this reference usually points to an object. But which object it points to depends on how the function was called.
+* Built-in utility called `Object.create(..)`. Eg: `var bar = Object.create( foo );`
+
 # Chapter 2: Into JavaScript
 
 In the previous chapter, I introduced the basic building blocks of programming, such as variables, loops, conditionals, and functions. Of course, all the code shown has been in JavaScript. But in this chapter, we want to focus specifically on things you need to know about JavaScript to get up and going as a JS developer.
@@ -150,7 +167,7 @@ typeof foo();		// "number"
 typeof foo.bar;		// "string"
 ```
 
-Again, functions are a subtype of `objects` -- `typeof` returns `"function"`, which implies that a `function` is a main type -- and can thus have properties, but you typically will only use function object properties (like `foo.bar`) in limited cases.
+Again, **functions are a subtype of `objects` -- `typeof` returns `"function"`, which implies that a `function` is a main type -- and can thus have properties**, but you typically will only use function object properties (like `foo.bar`) in limited cases.
 
 **Note:** For more information on JS values and their types, see the first two chapters of the *Types & Grammar* title of this series.
 
@@ -171,9 +188,9 @@ b.toFixed(4);			// "3.1416"
 
 The "how" behind being able to call `a.toUpperCase()` is more complicated than just that method existing on the value.
 
-Briefly, there is a `String` (capital `S`) object wrapper form, typically called a "native," that pairs with the primitive `string` type; it's this object wrapper that defines the `toUpperCase()` method on its prototype.
+Briefly, there is a `String` (capital `S`) object wrapper form, typically called a "native," that pairs with the primitive `string` type; **it's this object wrapper that defines the `toUpperCase()` method on its prototype**.
 
-When you use a primitive value like `"hello world"` as an `object` by referencing a property or method (e.g., `a.toUpperCase()` in the previous snippet), JS automatically "boxes" the value to its object wrapper counterpart (hidden under the covers).
+When you use a primitive value like `"hello world"` as an `object` by referencing a property or method (e.g., `a.toUpperCase()` in the previous snippet), **JS automatically "boxes" the value to its object wrapper counterpart** (hidden under the covers).
 
 A `string` value can be wrapped by a `String` object, a `number` can be wrapped by a `Number` object, and a `boolean` can be wrapped by a `Boolean` object. For the most part, you don't need to worry about or directly use these object wrapper forms of the values -- prefer the primitive value forms in practically all cases and JavaScript will take care of the rest for you.
 
@@ -219,7 +236,7 @@ b;				// 42 -- the number!
 
 In Chapter 1, we briefly mentioned the "truthy" and "falsy" nature of values: when a non-`boolean` value is coerced to a `boolean`, does it become `true` or `false`, respectively?
 
-The specific list of "falsy" values in JavaScript is as follows:
+**The specific list of "falsy" values in JavaScript is as follows:**
 
 * `""` (empty string)
 * `0`, `-0`, `NaN` (invalid `number`)
@@ -241,7 +258,7 @@ It's important to remember that a non-`boolean` value only follows this "truthy"
 
 There are four equality operators: `==`, `===`, `!=`, and `!==`. The `!` forms are of course the symmetric "not equal" versions of their counterparts; *non-equality* should not be confused with *inequality*.
 
-The difference between `==` and `===` is usually characterized that `==` checks for value equality and `===` checks for both value and type equality. However, this is inaccurate. The proper way to characterize them is that `==` checks for value equality with coercion allowed, and `===` checks for value equality without allowing coercion; `===` is often called "strict equality" for this reason.
+The difference between `==` and `===` is usually characterized that `==` checks for value equality and `===` checks for both value and type equality. However, this is inaccurate. The proper way to characterize them is that **`==` checks for value equality with coercion allowed, and `===` checks for value equality without allowing coercion**; `===` is often called "strict equality" for this reason.
 
 Consider the implicit coercion that's allowed by the `==` loose-equality comparison and not allowed with the `===` strict-equality:
 
@@ -269,14 +286,15 @@ To boil down a whole lot of details to a few simple takeaways, and help you know
 * If either value in a comparison could be of these specific values (`0`, `""`, or `[]` -- empty array), avoid `==` and use `===`.
 * In *all* other cases, you're safe to use `==`. Not only is it safe, but in many cases it simplifies your code in a way that improves readability.
 
-What these rules boil down to is requiring you to think critically about your code and about what kinds of values can come through variables that get compared for equality. If you can be certain about the values, and `==` is safe, use it! If you can't be certain about the values, use `===`. It's that simple.
+What these rules boil down to is requiring you to think critically about your code and about what kinds of values can come through variables that get compared for equality. If you can be certain about the values, and `==` is safe, use it! **If you can't be certain about the values, use `===`**. It's that simple.
 
 The `!=` non-equality form pairs with `==`, and the `!==` form pairs with `===`. All the rules and observations we just discussed hold symmetrically for these non-equality comparisons.
 
-You should take special note of the `==` and `===` comparison rules if you're comparing two non-primitive values, like `object`s (including `function` and `array`). Because those values are actually held by reference, both `==` and `===` comparisons will simply check whether the references match, not anything about the underlying values.
+You should take special note of the `==` and `===` comparison rules if you're comparing two non-primitive values, like `object`s (including `function` and `array`). Because those values are actually held by reference, **both `==` and `===` comparisons will simply check whether the references match, not anything about the underlying values**.
 
-For example, `array`s are by default coerced to `string`s by simply joining all the values with commas (`,`) in between. You might think that two `array`s with the same contents would be `==` equal, but they're not:
+For example, **`array`s are by default coerced to `string`s by simply joining all the values with commas (`,`) in between.** You might think that two `array`s with the same contents would be `==` equal, but they're not:
 
+**Array got coerced to string due to which a and b are equal to c**
 ```js
 var a = [1,2,3];
 var b = [1,2,3];
@@ -399,7 +417,7 @@ foo();
 
 Notice that `c` is not available inside of `bar()`, because it's declared only inside the inner `baz()` scope, and that `b` is not available to `foo()` for the same reason.
 
-If you try to access a variable's value in a scope where it's not available, you'll get a `ReferenceError` thrown. If you try to set a variable that hasn't been declared, you'll either end up creating a variable in the top-level global scope (bad!) or getting an error, depending on "strict mode" (see "Strict Mode"). Let's take a look:
+If you try to access a variable's value in a scope where it's not available, you'll get a `ReferenceError` thrown. **If you try to set a variable that hasn't been declared, you'll either end up creating a variable in the top-level global scope** (bad!) or getting an error, depending on "strict mode" (see "Strict Mode"). Let's take a look:
 
 ```js
 function foo() {
@@ -412,7 +430,7 @@ a;			// 1 -- oops, auto global variable :(
 
 This is a very bad practice. Don't do it! Always formally declare your variables.
 
-In addition to creating declarations for variables at the function level, ES6 *lets* you declare variables to belong to individual blocks (pairs of `{ .. }`), using the `let` keyword. Besides some nuanced details, the scoping rules will behave roughly the same as we just saw with functions:
+**In addition to creating declarations for variables at the function level, ES6 *lets* you declare variables to belong to individual blocks (pairs of `{ .. }`), using the `let` keyword.** Besides some nuanced details, the scoping rules will behave roughly the same as we just saw with functions:
 
 ```js
 function foo() {
@@ -638,7 +656,7 @@ foo();
 
 As you can see, listing the `(function IIFE(){ .. })` before its executing `()` is essentially the same as including `foo` before its executing `()`; in both cases, the function reference is executed with `()` immediately after it.
 
-Because an IIFE is just a function, and functions create variable *scope*, using an IIFE in this fashion is often used to declare variables that won't affect the surrounding code outside the IIFE:
+**Because an IIFE is just a function, and functions create variable *scope*, using an IIFE in this fashion is often used to declare variables that won't affect the surrounding code outside the IIFE**:
 
 ```js
 var a = 42;
@@ -769,7 +787,7 @@ Another very commonly misunderstood concept in JavaScript is the `this` identifi
 
 While it may often seem that `this` is related to "object-oriented patterns," in JS `this` is a different mechanism.
 
-If a function has a `this` reference inside it, that `this` reference usually points to an `object`. But which `object` it points to depends on how the function was called.
+**If a function has a `this` reference inside it, that `this` reference usually points to an `object`. But which `object` it points to depends on how the function was called.**
 
 It's important to realize that `this` *does not* refer to the function itself, as is the most common misconception.
 
@@ -816,7 +834,7 @@ The prototype mechanism in JavaScript is quite complicated. We will only glance 
 
 When you reference a property on an object, if that property doesn't exist, JavaScript will automatically use that object's internal prototype reference to find another object to look for the property on. You could think of this almost as a fallback if the property is missing.
 
-The internal prototype reference linkage from one object to its fallback happens at the time the object is created. The simplest way to illustrate it is with a built-in utility called `Object.create(..)`.
+The internal prototype reference linkage from one object to its fallback happens at the time the object is created. The simplest way to illustrate it is with a **built-in utility called `Object.create(..)`**.
 
 Consider:
 
