@@ -1,4 +1,13 @@
 # You Don't Know JS: *this* & Object Prototypes
+# Notes
+* There are two meanings of `this` which are incorrectly assummed. 
+	* First: `this` inside of function refers to the function itself.
+	* Second: `this` refers to function's scope. It is somewhat correct. To be clear, this does not, in any way, refer to a function's lexical scope.
+* You cannot create **bridge** between lexical scopes of two functions. Check [gist](https://gist.github.com/dhruv3/554487d3e9ef1a80a335de1b012e02c4).
+* `this` is not an author-time binding but a runtime binding. It is contextual based on the conditions of the function's invocation. `this` binding has nothing to do with where a function is declared, but has instead everything to do with the manner in which the function is called.
+* When a function is invoked an execution context is created. This record contains information about where the function was called from (the call-stack), how the function was invoked, what parameters were passed, etc. One of the properties of this record is the `this` reference which will be used for the duration of that function's execution.
+* `this` is neither a reference to the function itself, nor is it a reference to the function's lexical scope.
+* `this` is actually a binding that is made when a function is invoked, and what it references is determined entirely by the call-site where the function is called.
 # Chapter 1: `this` Or That?
 
 One of the most confused mechanisms in JavaScript is the `this` keyword. It's a special identifier keyword that's automatically defined in the scope of every function, but what exactly it refers to bedevils even seasoned JavaScript developers.
