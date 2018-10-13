@@ -2,9 +2,11 @@
 
 # My Notes
 * Way of thinking: Take any arbitrary section of code you've written, and wrap a function declaration around it, which in effect "hides" the code.
+* You can avoid collisions of variables by using: `Global "Namespaces"` and `Module Management`
 * Functions are by no means the only unit of scope. Block-scope refers to the idea that variables and functions can belong to an arbitrary block (generally, any `{ .. }` pair) of code, rather than only to the enclosing function.
 *  ES3 specified the variable declaration in the `catch` clause of a `try/catch` to be block-scoped to the `catch` block.
 * Declarations made with `let` will **not** hoist to the entire scope of the block they appear in. Such declarations will not observably "exist" in the block until the declaration statement.
+* Block scoping helps in `Garbage Collection`.
 * Declaring explicit blocks can help Garbage Collector know that things inside this block will not be used after the block ends.
 
 # Chapter 3: Function vs. Block Scope
