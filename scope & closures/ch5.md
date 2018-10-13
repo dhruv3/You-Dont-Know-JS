@@ -4,12 +4,14 @@
 * Closure is when a function is able to remember and access its lexical scope even when that function is executing outside its lexical scope.
 * "Magic" of closures does not `foo()` to be collected by Garbage Collector happen. That inner scope is in fact still "in use", and thus does not go away. 
 * `bar()` still has a reference to that scope, and **that reference is called closure**. `bar()` is inside of `foo()` and `foo()` returns `bar` function.
-* Functions (which access their own respective lexical scopes) as first-class values and pass them around, you are likely to see those functions exercising closure. Be that timers, event handlers, Ajax requests, cross-window messaging, web workers, or any of the other asynchronous (or synchronous!) tasks, when you pass in a callback function, get ready to sling some closure around!
+* Example of real life working closure: [link](https://github.com/dhruv3/You-Dont-Know-JS/blob/master/scope%20%26%20closures/ch5.md#now-i-can-see). 
+* [Creating a closure vs Exercising a closure](https://gist.github.com/amysimmons/af85281f3f794485e8de9dd76fbaa64f#file-closure-md).
 * If no closures were available then we would have to create an object and pass it around the functions we were going to call.
+* You can create singleton pattern by wrapping the module inside an IIFE. 
 * Two "requirements" for the module pattern to be exercised:
 	* There must be an outer enclosing function, and it must be invoked at least once (each time creates a new module instance).
 	* The enclosing function must return back at least one inner function, so that this inner function has closure over the private scope, and can access and/or modify that private state.
-* Get singleton module by wrapping the module inside an IIFE
+* **ES6 related**: `import` imports one or more members from a module's API into the current scope, each to a bound variable (hello in our case). `module` imports an entire module API to a bound variable (foo, bar in our case). `export` exports an identifier (variable, function) to the public API for the current module.
 # Chapter 5: Scope Closure
 
 We arrive at this point with hopefully a very healthy, solid understanding of how scope works.
