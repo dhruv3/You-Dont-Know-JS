@@ -1,4 +1,9 @@
 # You Don't Know JS: *this* & Object Prototypes
+# Notes
+* Objects can be created using `literal` format or `constructed` format.
+* JS automatically coerces a `"string"` primitive to a `String` object when necessary, which means you almost never need to explicitly create the Object form.
+* You *could* use an array as a plain key/value object, and never add any numeric indices, but this is a bad idea because arrays have behavior and optimizations specific to their intended use
+
 # Chapter 3: Objects
 
 In Chapters 1 and 2, we explained how the `this` binding points to various objects depending on the call-site of the function invocation. But what exactly are objects, and why do we need to point to them? We will explore objects in detail in this chapter.
