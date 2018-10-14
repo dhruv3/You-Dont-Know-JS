@@ -1,4 +1,20 @@
 # You Don't Know JS: *this* & Object Prototypes
+# Notes
+* [Corresponding Gist](https://gist.github.com/dhruv3/c799e122cc5f55b3e2baf55dc88c0ba7)
+* Call-Site: the location in code where a function is called (**not where it's declared**).
+* There are 4 rules and order of precedence exists in these to determine the correct value of `this`.
+* Rule 1: **Default Binding**. Standalone function invocation. If a function is called on its own, foo(), this will be either undefined (if in strict mode) or the global object (if in non-strict mode).
+* Rule 2: **Implicit Binding**. `obj.foo();`. Context object(`obj`) which should be used for the function call's `this` binding. **implicitly bound** function sometime lose original binding and default to global binding.
+* Rule 3: **Explicit Binding**. Using `call` and `apply` functions to bind `this`. Both functions take an object as first param which is used for `this`.
+* Rule 4: **Hard Binding**. ES5 has `bind` function which returns a new function that is hard-coded to call the original function with the `this` context set as you specified. 
+* Process when `new` is called:
+	1. a brand new object is created (aka, constructed) out of thin air
+	2. *the newly constructed object is `[[Prototype]]`-linked*
+	3. the newly constructed object is set as the `this` binding for that function call
+	4. unless the function returns its own alternate **object**, the `new`-invoked function call will *automatically* return the newly constructed object.
+* new binding is more precedent than implicit binding.
+* explicit binding is more precedent than implicit binding.
+
 # Chapter 2: `this` All Makes Sense Now!
 
 In Chapter 1, we discarded various misconceptions about `this` and learned instead that `this` is a binding made for each function invocation, based entirely on its **call-site** (how the function is called).
