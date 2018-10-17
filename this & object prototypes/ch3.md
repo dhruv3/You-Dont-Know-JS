@@ -2,7 +2,11 @@
 # Notes
 * Objects can be created using `literal` format or `constructed` format.
 * JS automatically coerces a `"string"` primitive to a `String` object when necessary, which means you almost never need to explicitly create the Object form.
-* You *could* use an array as a plain key/value object, and never add any numeric indices, but this is a bad idea because arrays have behavior and optimizations specific to their intended use
+* You *could* use an array as a plain key/value object, and never add any numeric indices, but this is a bad idea because arrays have behavior and optimizations specific to their intended use.
+* `Object.assign` creates a shallow copy of non-primitive variables.
+* As of ES5, object propertiy descriptor was introduced and it has characterstics: value, writable, enumerable and configurable(means whether or not you can modify the property descriptor).
+* `Object.defineProperty` can be used to updated these object descriptors.
+* Another thing `configurable:false prevents` is the ability to use the `delete` operator to remove an existing property.
 
 # Chapter 3: Objects
 
