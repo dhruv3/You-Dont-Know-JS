@@ -6,7 +6,12 @@
 * `Object.assign` creates a shallow copy of non-primitive variables.
 * As of ES5, object propertiy descriptor was introduced and it has characterstics: value, writable, enumerable and configurable(means whether or not you can modify the property descriptor).
 * `Object.defineProperty` can be used to updated these object descriptors.
-* Another thing `configurable:false prevents` is the ability to use the `delete` operator to remove an existing property.
+* Another thing `configurable:false` prevents is the ability to use the `delete` operator to remove an existing property.
+* `Object.preventExtensions()` means no new properties can be added to your object
+* `Object.seal()` calls `Object.preventExtensions()`, but also sets configurable to false on every property in the object. This prevents you from adding new properties as well as reconfiguring or deleting them. You can however still modify their values.
+* `Object.freeze()` calls `Object.seal()`, but also sets writable to false on every property in the object. This is the highest level of immutability.
+* `[[Get]]` operation is performed when property is accessed from an object. If not found it goes up prototype chain.
+* `[[Put]]` operation has a 3 step process which is followed by JS.
 
 # Chapter 3: Objects
 
