@@ -1,3 +1,9 @@
+# Second Edition
+## Ch 1: What is JS?
+* JS language is organized: scope/closures, prototypes/objects, and types/coercion.
+* 
+
+
 # Chapter 1
 * The JavaScript engine actually compiles the program on the fly and then immediately runs the compiled code.
 * For input use the prompt(..) function
